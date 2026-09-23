@@ -3,7 +3,6 @@ import { MapPinIcon, ClockIcon, CalendarDaysIcon } from 'lucide-react';
 
 const FLORAL = "/20745df0-5f10-4c3b-9e6f-a54efda97107.jpg";
 
-const COUPLE = "/6509a508-6d27-4ddf-aa7e-af71256194e4.jpg";
 
 
 const MAP_URL = 'https://maps.app.goo.gl/DYMjthaDbUvKN3Rs6?g_st=ic';
@@ -75,15 +74,9 @@ export function WeddingCard() {
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-6 -left-6 w-36 rotate-180 select-none mix-blend-multiply sm:w-44" />
       
-      <img
-        src={COUPLE}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-2 right-2 w-20 select-none mix-blend-multiply sm:w-24" />
-      
 
       <div className="relative border border-gold/30 outline outline-1 -outline-offset-[6px] outline-gold/20">
-        <div className="relative px-6 pb-32 pt-10 text-center text-ink sm:px-12 sm:pb-36 sm:pt-12">
+        <div className="relative px-6 pb-14 pt-10 text-center text-ink sm:px-12 sm:pb-16 sm:pt-12">
           <p
             lang="ar"
             dir="rtl"
@@ -122,6 +115,8 @@ export function WeddingCard() {
 
             <Person role="Groom" name="Mohammed Sakeeb" lineage="S/o Ahmed Ali & Zainaba" />
           </div>
+
+          
 
           <div className="mt-9">
             <Divider />

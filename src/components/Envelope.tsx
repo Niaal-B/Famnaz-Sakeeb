@@ -39,9 +39,18 @@ export function Envelope({ onOpen, onOpened }: EnvelopeProps) {
       <motion.div
         animate={{ opacity: flapOpen ? 0 : 1 }}
         transition={{ duration: 0.2 }}
-        className="mb-16 text-center">
+        className="mb-12 text-center">
         
-        <p className="font-serif text-[0.7rem] uppercase tracking-[0.34em] text-ink/60">
+        <div className="mx-auto mb-6 h-32 w-32 rounded-full border border-gold/60 p-1 shadow-[0_12px_30px_-12px_rgba(59,42,34,0.45)] sm:h-36 sm:w-36">
+          <img
+            src="/couple-round.webp"
+            alt="Fathimath Famnaz and Mohammed Sakeeb"
+            width={400}
+            height={400}
+            fetchPriority="high"
+            className="h-full w-full select-none rounded-full object-cover" />
+        </div>
+        <p className="font-serif text-[0.66rem] uppercase tracking-[0.26em] text-ink/60 sm:text-[0.7rem] sm:tracking-[0.34em]">
           You are invited to the wedding of
         </p>
         <p className="mt-3 font-script text-4xl leading-tight text-crimson sm:text-5xl">
