@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { InstagramIcon } from 'lucide-react';
 import { WeddingCard } from './components/WeddingCard';
 import { Envelope } from './components/Envelope';
 import { BackgroundMusic } from './components/BackgroundMusic';
@@ -30,9 +31,18 @@ export function App() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-        className="relative flex w-full justify-center px-4 py-8 sm:py-12">
+        className="relative flex w-full flex-col items-center px-4 py-8 sm:py-12">
         
           <WeddingCard />
+          <a
+            href="https://www.instagram.com/niaal._/"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex items-center gap-1.5 font-serif text-[0.7rem] tracking-[0.12em] text-ink/45 transition-colors duration-150 hover:text-crimson">
+            
+            <InstagramIcon className="h-3 w-3" aria-hidden="true" />
+            @niaal._
+          </a>
         </motion.div>
       }
     </main>);
