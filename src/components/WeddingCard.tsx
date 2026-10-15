@@ -2,6 +2,7 @@ import React from 'react';
 import { MapPinIcon, ClockIcon, CalendarDaysIcon } from 'lucide-react';
 
 const FLORAL = "/20745df0-5f10-4c3b-9e6f-a54efda97107.jpg";
+const PHOTO = "/couple-photo.webp";
 
 
 
@@ -150,7 +151,22 @@ export function WeddingCard() {
             Get Directions
           </a>
 
-          <p className="mt-9 font-serif text-[0.8rem] italic tracking-wide text-ink/65">
+          <div className="mt-10">
+            <Divider />
+          </div>
+
+          {/* Couple photo, like a print tucked into the card */}
+          <figure className="mx-auto mt-8 w-full max-w-[17rem] -rotate-1 border border-gold/40 bg-[#fbf7f1] p-2.5 pb-3 shadow-[0_18px_40px_-20px_rgba(59,42,34,0.45)] sm:max-w-[19rem]">
+            <img
+              src={PHOTO}
+              alt="Fathimath Famnaz and Mohammed Sakeeb"
+              width={720}
+              height={900}
+              loading="lazy"
+              className="aspect-[4/5] w-full select-none object-cover" />
+          </figure>
+
+          <p className="mt-6 font-serif text-[0.8rem] italic tracking-wide text-ink/65">
             Your presence and prayers are our blessing
           </p>
         </div>
