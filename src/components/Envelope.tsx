@@ -10,7 +10,7 @@ type EnvelopeProps = {
 type Phase = 'closed' | 'seal' | 'flap' | 'rising';
 
 const EASE = [0.23, 1, 0.32, 1] as const;
-const FLORAL = '/20745df0-5f10-4c3b-9e6f-a54efda97107.jpg';
+const HERO = '/hero-garden.webp';
 const GOLD_LINE = '#c9a24a';
 
 // Slightly uneven circle so the seal looks like pressed wax
@@ -28,26 +28,6 @@ const SPARKS = Array.from({ length: 12 }, (_, i) => {
   const d = i % 2 === 0 ? 95 : 70;
   return { x: Math.cos(a) * d, y: Math.sin(a) * d, size: i % 2 === 0 ? 6 : 4 };
 });
-
-function GeometricPattern() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.09] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]">
-      <defs>
-        <pattern id="star8" width="44" height="44" patternUnits="userSpaceOnUse">
-          <g fill="none" stroke="#a9822f" strokeWidth="1">
-            <rect x="12" y="12" width="20" height="20" />
-            <rect x="12" y="12" width="20" height="20" transform="rotate(45 22 22)" />
-            <circle cx="22" cy="22" r="4" />
-            <path d="M0 0 L6 6 M44 0 L38 6 M0 44 L6 38 M44 44 L38 38" />
-          </g>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#star8)" />
-    </svg>);
-
-}
 
 export function Envelope({ onOpen, onOpened }: EnvelopeProps) {
   const [phase, setPhase] = useState<Phase>('closed');
@@ -72,74 +52,67 @@ export function Envelope({ onOpen, onOpened }: EnvelopeProps) {
 
   return (
     <motion.section
-      className="fixed inset-0 z-40 flex w-full flex-col items-center justify-center overflow-hidden bg-[#efe7df] px-6 py-6"
+      className="fixed inset-0 z-40 flex w-full flex-col overflow-hidden bg-[#efe7df] lg:flex-row"
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: EASE }}
       aria-label="Wedding invitation envelope">
-
-      {/* Background: warm glow, geometric pattern, florals, petals */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-          'radial-gradient(ellipse at 50% 42%, rgba(255,248,236,0.95) 0%, rgba(247,236,222,0.6) 38%, rgba(239,231,223,0) 70%)'
-        }} />
-
-      <GeometricPattern />
-      <img
-        src={FLORAL}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-8 -top-8 w-40 select-none mix-blend-multiply sm:w-60" />
-
-      <img
-        src={FLORAL}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-8 -left-8 w-40 rotate-180 select-none mix-blend-multiply sm:w-60" />
+      
+      {/* Couple photo: fills the space above the invitation on phones, left half on desktop */}
+      <div className="pointer-events-none relative min-h-0 w-full flex-1 [-webkit-mask-image:linear-gradient(to_bottom,black_72%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_72%,transparent_100%)] lg:h-full lg:w-1/2 lg:flex-none lg:[-webkit-mask-image:linear-gradient(to_right,black_70%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,black_70%,transparent_100%)]">
+        <img
+          src={HERO}
+          alt="Fathimath Famnaz and Mohammed Sakeeb"
+          width={900}
+          height={1350}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full select-none object-cover object-[50%_30%] lg:object-[50%_35%]" />
+        
+        <motion.p
+          lang="ar"
+          dir="rtl"
+          animate={{ opacity: opening ? 0 : 1 }}
+          transition={{ duration: 0.35, ease: EASE }}
+          className="absolute inset-x-0 top-4 text-center font-arabic text-lg leading-relaxed text-gold [text-shadow:0_0_12px_rgba(255,250,240,0.95),0_0_4px_rgba(255,250,240,0.9)] sm:text-xl lg:hidden">
+          
+          بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+        </motion.p>
+      </div>
 
       {!reduce && <FallingPetals />}
 
-      {/* Heading */}
-      <motion.div
-        animate={{ opacity: opening ? 0 : 1, y: opening ? -8 : 0 }}
-        transition={{ duration: 0.35, ease: EASE }}
-        className="relative mb-7 text-center sm:mb-10">
-
-        <p lang="ar" dir="rtl" className="font-arabic text-lg leading-relaxed text-gold sm:text-xl">
+      <div className="relative -mt-4 flex shrink-0 flex-col items-center px-6 pb-6 lg:mt-0 lg:w-1/2 lg:justify-center lg:py-10">
+        <motion.p
+          lang="ar"
+          dir="rtl"
+          animate={{ opacity: opening ? 0 : 1 }}
+          transition={{ duration: 0.35, ease: EASE }}
+          className="hidden font-arabic text-xl leading-relaxed text-gold lg:block">
+          
           بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-        </p>
+        </motion.p>
 
-        <div className="mx-auto mt-3 w-fit rounded-full border border-gold/35 p-1 shadow-[0_14px_32px_-14px_rgba(59,42,34,0.5)]">
-          <div className="rounded-full border border-gold/70 p-[3px]">
-            <img
-              src="/couple-round.webp"
-              alt="Fathimath Famnaz and Mohammed Sakeeb"
-              width={400}
-              height={400}
-              fetchPriority="high"
-              className="h-24 w-24 select-none rounded-full object-cover sm:h-32 sm:w-32" />
-
+        {/* Heading */}
+        <motion.div
+          animate={{ opacity: opening ? 0 : 1, y: opening ? -8 : 0 }}
+          transition={{ duration: 0.35, ease: EASE }}
+          className="relative mb-5 text-center sm:mb-7 lg:mb-9 lg:mt-8">
+          
+          <p className="font-serif text-[0.66rem] uppercase tracking-[0.26em] text-ink/70 sm:text-[0.7rem] sm:tracking-[0.34em]">
+            You are invited to the wedding of
+          </p>
+          <p className="mt-1 font-script text-[2.6rem] leading-tight text-crimson sm:text-5xl lg:text-6xl">
+            Famnaz <span className="text-gold">&amp;</span> Sakeeb
+          </p>
+          <div className="mt-1 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-gold/60" />
+            <span className="font-serif text-sm tracking-[0.3em] text-ink/75">12 · 12 · 2026</span>
+            <span className="h-px w-10 bg-gold/60" />
           </div>
-        </div>
-
-        <p className="mt-4 font-serif text-[0.66rem] uppercase tracking-[0.26em] text-ink/60 sm:text-[0.7rem] sm:tracking-[0.34em]">
-          You are invited to the wedding of
-        </p>
-        <p className="mt-2 font-script text-[2.6rem] leading-tight text-crimson sm:text-5xl">
-          Famnaz <span className="text-gold">&amp;</span> Sakeeb
-        </p>
-        <div className="mt-2 flex items-center justify-center gap-3">
-          <span className="h-px w-10 bg-gold/50" />
-          <span className="font-serif text-sm tracking-[0.3em] text-ink/70">12 · 12 · 2026</span>
-          <span className="h-px w-10 bg-gold/50" />
-        </div>
-      </motion.div>
+        </motion.div>
 
       {/* Envelope */}
       <motion.div
-        className="relative w-full max-w-[340px] sm:max-w-[420px]"
+        className="relative w-[min(300px,78vw,38vh)] sm:w-[min(360px,40vh)] lg:w-[min(420px,50vh)]"
         animate={reduce || opening ? { y: 0 } : { y: [0, -6, 0] }}
         transition={reduce || opening ? { duration: 0.3 } : { duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
 
@@ -326,10 +299,11 @@ export function Envelope({ onOpen, onOpened }: EnvelopeProps) {
       <motion.p
         animate={opening ? { opacity: 0 } : reduce ? { opacity: 1 } : { opacity: [0.45, 1, 0.45] }}
         transition={opening || reduce ? { duration: 0.2 } : { duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative mt-8 font-serif text-[0.72rem] uppercase tracking-[0.3em] text-crimson sm:mt-10">
+        className="relative mt-6 font-serif text-[0.72rem] uppercase tracking-[0.3em] text-crimson sm:mt-8">
 
         Tap the envelope to open
       </motion.p>
+      </div>
     </motion.section>);
 
 }
