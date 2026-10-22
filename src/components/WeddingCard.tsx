@@ -91,7 +91,7 @@ export function WeddingCard() {
           </p>
 
           <h1 className="mt-4 font-serif text-[1.05rem] font-semibold leading-snug tracking-wide text-ink sm:text-lg">
-            Mr. M. Muhammed Haji
+            Mr. Muhammed Kunhi Haji
             <span className="mx-1.5 font-script text-2xl font-normal text-gold">&amp;</span>
             Ayishabi
           </h1>
@@ -105,9 +105,13 @@ export function WeddingCard() {
               name="Fathimath Famnaz"
               lineage={
               <>
-                  Gd/o Late Peedika Abbas Haji Mundaki
+                  Gd/o Late Peedika Abbas Haji Mundakai
                   <br />
-                  &amp; Late Aboobacker Haji
+                  &amp; Late TA Aboobacker Thottil Aloor
+                  <br />
+                  D/o Muhammed Kunhi Haji &amp; Ayishabi
+                  <br />
+                  MA Manzil, Mooladukkam
                 </>
               } />
             
@@ -133,13 +137,13 @@ export function WeddingCard() {
           <div className="mx-auto mt-7 flex max-w-[26rem] flex-col divide-y divide-gold/25 border-y border-gold/25 py-4 sm:flex-row sm:divide-x sm:divide-y-0">
             <EventBlock title="Nikah" time="4:00 PM" place="Groom's Residence" />
             <div className="h-4 sm:hidden" aria-hidden="true" />
-            <EventBlock title="Reception" time="6:00 – 9:00 PM" place="Ma Manzil, Mooladukkam" />
+            <EventBlock title="Reception" time="6:00 – 9:00 PM" place="MA Manzil, Mooladukkam" />
           </div>
 
           <p className="mt-6 font-serif text-[0.7rem] uppercase tracking-[0.28em] text-ink/60">
             Venue
           </p>
-          <p className="mt-1 font-serif text-lg font-medium text-ink">Ma Manzil, Mooladukkam</p>
+          <p className="mt-1 font-serif text-lg font-medium text-ink">MA Manzil, Mooladukkam</p>
 
           <a
             href={MAP_URL}
